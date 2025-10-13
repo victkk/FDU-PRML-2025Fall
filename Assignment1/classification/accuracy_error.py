@@ -1,22 +1,36 @@
 import numpy as np
 
 def accuracy_score(y_true, y_pred):
-    """Accuracy classification score.
-    In multilabel classification, this function computes subset accuracy:
-    the set of labels predicted for a sample must *exactly* match the
-    corresponding set of labels in y_true.
-    Read more in the :ref:`User Guide <accuracy_score>`.
+    """
+    Accuracy classification score (1D labels only).
+
+    This function supports **single-label** classification with 1D label arrays.
+    Label-indicator / one-hot matrices (shape = n_samples * n_classes),
+    multilabel targets, and sparse matrices are **NOT** supported. If such
+    inputs are needed, please implement a dedicated metric (e.g. subset
+    accuracy for multilabel) instead of using this function.
 
     Parameters
     ----------
-    y_true : 1d array-like, or label indicator array / sparse matrix
-        Ground truth (correct) labels.
-    y_pred : 1d array-like, or label indicator array / sparse matrix
-        Predicted labels, as returned by a classifier.
+    y_true : 1d array-like of shape (n_samples,)
+        Ground-truth class labels.
+    y_pred : 1d array-like of shape (n_samples,)
+        Predicted class labels.
 
     Returns
     -------
-    score : accuracy
+    acc : float
+        Proportion of correct predictions in [0, 1].
+
+    Notes
+    -----
+    - For multilabel/indicator inputs, use a separate implementation such as
+      subset accuracy (row-wise equality) or define a micro-averaged metric.
+
+    Examples
+    --------
+    >>> accuracy_score([0, 1, 1, 0], [0, 1, 0, 0])
+    0.75
     """
     accuracy = -1
     y_true = np.asarray(y_true).reshape(-1)
