@@ -5,3 +5,4 @@ Assignment1/k_nerest_neighbors/knn_groundtruth.py
 classification.pptx
 __pycache__/
 output/
+*.npy

@@ -1,0 +1,12 @@
+
+=== Criterion: info_gain ===
+Accuracy: 0.9333
+
+=== Criterion: info_gain_ratio ===
+Accuracy: 0.9000
+
+=== Criterion: gini ===
+Accuracy: 0.9000
+
+=== Criterion: error_rate ===
+Accuracy: 0.9333
